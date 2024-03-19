@@ -23,3 +23,22 @@ CREATE TABLE Books(
     FOREIGN KEY (author_id) REFERENCES Authors(author_id) 
 )
 
+CREATE TABLE Users(
+    user_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    address VARCHAR(255),
+    age INT
+)
+
+CREATE TABLE Purchases(
+    purchase_id INT PRIMARY KEY AUTO_INCREMENT,
+    purchase_date DATETIME NOT NULL,
+    quantity INT NOT NULL,
+    purchase_price INT NOT NULL,
+    user_id INT NOT NULL,
+    book_id INT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES Users(user_id),
+    FOREIGN KEY (book_id) REFERENCES Books(book_id)
+)
+
